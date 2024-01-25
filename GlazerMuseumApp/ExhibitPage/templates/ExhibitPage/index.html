@@ -1,0 +1,9 @@
+{% if exhibitList %}
+<ul>
+    {% for ExText in exhibitList %}
+    <li><a href="/ExhibitPage/{{ ExText.id }}/">{{ ExText.titleText }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no exhibits at this moment.</p>
+{% endif %}
