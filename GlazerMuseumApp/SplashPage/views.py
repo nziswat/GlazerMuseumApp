@@ -1,9 +1,19 @@
+#exhibit page view
 from django.http import HttpResponse
 from django.template import loader
 
-from django.urls import path
+from .models import SPText
 
-# Create your views here.
 def index(request):
+    Splashpage = SPText.objects.all()
+    template = loader.get_template("SplashPage/SplashPage.html")
+    context = {"Splashpage":Splashpage}
 
-    return HttpResponse("Merely a test of the splash. Manually type your desired link for now")
+    return HttpResponse(template.render(context,request))
+
+def details(request,SPText_id):
+    SplashpageText = SPText.objects.get(id=SPText_id)
+    template = loader.get_template("SplashPage/details.html")
+    context = {"SPText":SplashpageText}
+
+    return HttpResponse(template.render(context,request))
