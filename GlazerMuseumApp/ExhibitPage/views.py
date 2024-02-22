@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import ExText
+from .models import ExText, PlayTypes
 
 def index(request):
     exhibitList = ExText.objects.all()
@@ -12,10 +12,11 @@ def index(request):
     return HttpResponse(template.render(context,request))
 
 def details(request,ExText_id):
-    ExhibitText = ExText.objects.get(id=ExText_id)
+    exhibitText = ExText.objects.get(id=ExText_id)
     template = loader.get_template("ExhibitPage/details.html")
-    context = {"ExText":ExhibitText}
+    context = {"ExText":exhibitText,"plays":exhibitText.exhibitPlays.play_set.all()}
+   # plays= {"plays":}
+    return HttpResponse(template.render(context,request)) #only takes two args, pass all to context
 
-    return HttpResponse(template.render(context,request))
-
-
+def vote(request, question_id):
+    return HttpResponse(question_id)
