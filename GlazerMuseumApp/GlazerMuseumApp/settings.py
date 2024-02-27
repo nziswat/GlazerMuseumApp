@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ExhibitPage.apps.ExhibitpageConfig'
+    'ExhibitPage.apps.ExhibitpageConfig',
     'SplashPage.apps.SplashpageConfig'
 ]
 
