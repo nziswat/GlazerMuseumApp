@@ -1,0 +1,24 @@
+{% if ExText %}
+<ul>
+    <p>{{ExText.titleText}}</p>
+    <p>{{ExText.descText}}</p>
+</ul>
+
+<img src={{ExText.imagePath}} alt="Image" />
+
+
+
+<form action="{% url 'vote'}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {% for play in plays%}
+        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play }}">
+        <label for="play">{{ play }} DEBUG VOTES: {{play.votes}}<br /> </label> <!-- TODO: connect this crap properly to process the votes. -->
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+</form>
+
+{% else %}
+<p>An error has occured displaying this exhibit.</p>
+{% endif %}
