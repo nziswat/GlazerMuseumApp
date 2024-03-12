@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GlazerMuseumApp"
+    "\\GlazerMuseumApp",
+    "\\GlazerMuseumApp\\ExhibitPage",
+    "\\GlazerMuseumApp\\ExhibitPage\\templates",
+    "\\GlazerMuseumApp\\ExhibitPage\\templates\\ExhibitPage",
+    "\\GlazerMuseumApp\\GlazerMuseumApp",
+    "\\GlazerMuseumApp\\SplashPage\\templates",
+    "\\GlazerMuseumApp\\SplashPage\\templates\\SplashPage"
   ],
+  "SelectedNode": "\\GlazerMuseumApp\\GlazerMuseumApp\\urls.py",
   "PreviewInSolutionExplorer": false
 }

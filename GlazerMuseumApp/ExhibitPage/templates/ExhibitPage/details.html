@@ -8,11 +8,11 @@
 
 
 
-<form action="{% url 'vote'}" method="post">
+<form action="{% url 'vote' exid%}" method="post">
     {% csrf_token %}
     <fieldset>
         {% for play in plays%}
-        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play }}">
+        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play.id }}">
         <label for="play">{{ play }} DEBUG VOTES: {{play.votes}}<br /> </label> <!-- TODO: connect this crap properly to process the votes. -->
         {% endfor %}
     </fieldset>
