@@ -8,12 +8,12 @@
 
 
 
-<form action="{% url 'vote' exid%}" method="post">
+<form action="{% url 'vote' exid %}" method="post">
     {% csrf_token %}
     <fieldset>
-        {% for play in plays%}
-        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play.id }}">
-        <label for="play">{{ play }} DEBUG VOTES: {{play.votes}}<br /> </label> <!-- TODO: connect this crap properly to process the votes. -->
+        {% for play in plays %}
+        <input type="checkbox" name="plays[]" id="play{{ forloop.counter }}" value="{{ play.id }}">
+        <label for="play{{ forloop.counter }}">{{ play }} DEBUG VOTES: {{ play.votes }}<br /></label>
         {% endfor %}
     </fieldset>
     <input type="submit" value="Vote">

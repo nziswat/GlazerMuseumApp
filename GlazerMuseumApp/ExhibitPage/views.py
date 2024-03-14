@@ -1,4 +1,5 @@
 #exhibit page view
+from math import e
 from django.http import HttpResponse
 from django.template import loader
 from django.db.models import F
@@ -11,7 +12,7 @@ def index(request):
     context = {"exhibitList":exhibitList}
 
     return HttpResponse(template.render(context,request))
-
+e
 def details(request,ExText_id):
     exhibitText = ExText.objects.get(id=ExText_id)
     template = loader.get_template("ExhibitPage/details.html")
@@ -22,12 +23,17 @@ def details(request,ExText_id):
 def vote(request, ExText_id):
     exhibit = ExText.objects.get(id=ExText_id)
     plays = exhibit.exhibitPlays.play_set.all()
+    
         
-    choices = plays.get(pk=request.POST["play"])
+    #choices = plays.get(pk=request.POST["play"])
+    choices = request.POST.getlist('plays[]')
+    selected_plays = plays.filter(pk__in=choices)
 
-    for each in choices:
-        each.votes = F("votes") + 1
+
+    for each in selected_plays:
+        each.addvote()
         each.save()
+
     return HttpResponse(request)
     
     

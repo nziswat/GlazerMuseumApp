@@ -25,7 +25,7 @@ class Play(models.Model): #Each play itself, is an object maybe in the future ad
     
     def __str__(self):
         return self.playName
-    def vote(self): #proof of concept, no security no verification
+    def addvote(self): #proof of concept, no security no verification
         self.votes += 1
 
 class ExText(models.Model): #perhaps change ExText to ExhibitData, since it's grown out of hand.
