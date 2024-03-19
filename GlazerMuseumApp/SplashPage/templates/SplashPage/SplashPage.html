@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glazer's Children Museum</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gcm.css' %}">
+    <!-- Add viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add CSS link for your styles -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- GCM LOGO -->
+        <a href="#top">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+        </a>
+        <!--NAVBAR-->
+        <nav>
+            <div class="navbar">
+                <a href="#home" id="home-link" class="nav-link">Home</a>
+                <a href="#exhibits" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="#about" id="about-link" class="nav-link">About Us</a>
+                <a href="#contact" id="contact-link" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Banner -->
+    <section id="banner" style="display: flex;">
+        <div style="flex: 1;">
+            <h2>WELCOME!</h2>
+            <p class="text" id="text1id"></p>Play with purpose at the Glazer Children’s Museum, Tampa’s interactive, learning laboratory where children play, discover, and connect to the world around them to develop as lifelong learners and leaders.
+       Ready to explore? Take a look! </p>
+       <div class="slider">
+        <div class="slides">
+           <img class="slide" src="{% static 'big-john-glazer-childrens-museum-banner.jpg' %}" alt="Big John">
+           <img class="slide" src="{% static 'gcmpark.jpg' %}" alt="Slide 2">
+           <img class="slide" src="{% static 'gcmpark2.webp' %}" alt="Slide 3">
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094</button>
+        <button class="next" onclick="prevSlide()">&#10095</button>
+    </div>
+    <script src="{% static 'gcm.js' %}"></script>
+</div>
+</section>
+
+
+    <!-- Home -->
+    <section id="home">
+        <h2>Home</h2>
+        <p>Information about your company...</p>
+    </section>
+
+    <!-- Exhibits -->
+    <section id="Exhibits">
+        <h2>Exhibits</h2>
+        <p></p>
+        <!-- Link to navigate to the exhibit page -->
+        <a href="{% url 'ExhibitPage' %}" class="btn btn-primary">Visit Exhibit</a>
+    </section>
+
+    <!-- About Us -->
+    <section id="about">
+        <h2>About Us</h2>
+        <!-- Project details -->
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <form>
+            <!-- Contact form elements -->
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+    </footer>
+
+</body>
+</html>

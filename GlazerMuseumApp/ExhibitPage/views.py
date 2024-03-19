@@ -1,6 +1,8 @@
 #exhibit page view
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
+
 
 from .models import ExText, PlayTypes
 
@@ -20,3 +22,8 @@ def details(request,ExText_id):
 
 def vote(request, question_id):
     return HttpResponse(question_id)
+
+def ExhibitPage(request):
+    exhibitList = ExText.objects.all()
+    context = {"exhibitList": exhibitList}
+    return render(request, 'ExhibitPage/index.html', context)
