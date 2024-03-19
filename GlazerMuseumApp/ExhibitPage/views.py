@@ -22,21 +22,20 @@ def details(request,ExText_id):
 
 def vote(request, ExText_id):
     exhibit = ExText.objects.get(id=ExText_id)
-    plays = exhibit.exhibitPlays.play_set.all()
+    plays = exhibit.exhibitPlays.play_set.all() #get the list of plays in the exhibit's play set 
+    #MAYBE make this more ambiguious to not depend on exhibit/playset
     
         
     #choices = plays.get(pk=request.POST["play"])
-    choices = request.POST.getlist('plays[]')
-    selected_plays = plays.filter(pk__in=choices)
+    choices = request.POST.getlist('plays[]') #filter the plays by the plays selected with the vote
+    selected_plays = plays.filter(pk__in=choices) #
 
 
-    for each in selected_plays:
-        each.addvote()
+    for each in selected_plays:  #pick each play and add a vote by exhibit and cookie
+        #Time stamp is handled by the vote creation itself
+        each.addvote(exhibit,'123debug123')
         each.save()
 
     return HttpResponse(request)
     
     
-
-#def vote(request, question_id):
-#    return HttpResponse(question_id)
