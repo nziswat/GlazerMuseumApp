@@ -16,13 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
-from django.conf.urls.static import static
-
-urlpatterns = [
-    path('ExhibitPage/', include("ExhibitPage.urls")),
-    path('admin/', admin.site.urls),
-=======
 
 #2FA
 from django.contrib.auth.models import User #Django default user model
@@ -39,14 +32,11 @@ admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 urlpatterns = [
-    path('ExhibitPage/', include("ExhibitPage.urls")),
+    path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
     
     #Honeypot path
-    path('admin/', include('admin_honeypot.urls')),
-    
-    #Actual admin path
+    path('admin/', include('admin_honeypot.urls')), 
     path('GlazerStaff/', admin.site.urls),
     
->>>>>>> main
     path('', include("SplashPage.urls")),
 ]

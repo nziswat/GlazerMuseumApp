@@ -1,15 +1,8 @@
 #exhibit page view
-<<<<<<< HEAD
-from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import render
-
-=======
 from math import e
 from django.http import HttpResponse
 from django.template import loader
 from django.db.models import F
->>>>>>> main
 
 from .models import ExText, PlayTypes
 
@@ -19,23 +12,6 @@ def index(request):
     context = {"exhibitList":exhibitList}
 
     return HttpResponse(template.render(context,request))
-<<<<<<< HEAD
-
-def details(request,ExText_id):
-    exhibitText = ExText.objects.get(id=ExText_id)
-    template = loader.get_template("ExhibitPage/details.html")
-    context = {"ExText":exhibitText,"plays":exhibitText.exhibitPlays.play_set.all()}
-   # plays= {"plays":}
-    return HttpResponse(template.render(context,request)) #only takes two args, pass all to context
-
-def vote(request, question_id):
-    return HttpResponse(question_id)
-
-def ExhibitPage(request):
-    exhibitList = ExText.objects.all()
-    context = {"exhibitList": exhibitList}
-    return render(request, 'ExhibitPage/index.html', context)
-=======
 e
 def details(request,ExText_id):
     exhibitText = ExText.objects.get(id=ExText_id)
@@ -64,4 +40,3 @@ def vote(request, ExText_id):
 
 #def vote(request, question_id):
 #    return HttpResponse(question_id)
->>>>>>> main

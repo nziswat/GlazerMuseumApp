@@ -1,27 +1,4 @@
 {% if ExText %}
-<<<<<<< HEAD
-    <ul>
-        <p>{{ ExText.titleText }}</p>
-        <p>{{ ExText.descText }}</p>
-    </ul>
-
-    <img src="{{ ExText.imagePath }}" alt="Image" />
-
-    <form action="{% url 'vote' ExText.id %}" method="post">
-        {% csrf_token %}
-        <fieldset>
-            {% for play in plays %}
-                <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play }}">
-                <label for="play{{ forloop.counter }}">{{ play }} DEBUG VOTES: {{ play.votes }}<br /> </label>
-            {% endfor %}
-        </fieldset>
-        <input type="submit" value="Vote">
-    </form>
-
-{% else %}
-    <p>Exhibit information is not available.</p>
-{% endif %}
-=======
 <ul>
     <p>{{ExText.titleText}}</p>
     <p>{{ExText.descText}}</p>
@@ -45,4 +22,3 @@
 {% else %}
 <p>An error has occured displaying this exhibit.</p>
 {% endif %}
->>>>>>> main
