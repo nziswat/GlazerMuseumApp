@@ -32,12 +32,10 @@ admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 urlpatterns = [
-    path('ExhibitPage/', include("ExhibitPage.urls")),
+    path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
     
     #Honeypot path
-    path('admin/', include('admin_honeypot.urls')),
-    
-    #Actual admin path
+    path('admin/', include('admin_honeypot.urls')), 
     path('GlazerStaff/', admin.site.urls),
     
     path('', include("SplashPage.urls")),
