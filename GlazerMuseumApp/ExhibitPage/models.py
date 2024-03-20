@@ -1,3 +1,4 @@
+from collections import defaultdict
 from django.db import models
 
 
@@ -24,6 +25,8 @@ class Play(models.Model): #Each play itself, is an object maybe in the future ad
     
     def __str__(self):
         return self.playName
+    def addvote(self): #proof of concept, no security no verification
+        self.votes += 1
 
 class ExText(models.Model): #perhaps change ExText to ExhibitData, since it's grown out of hand.
     titleText= models.CharField(max_length=200, default='')

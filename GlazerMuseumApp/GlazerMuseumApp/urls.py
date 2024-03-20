@@ -16,10 +16,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('ExhibitPage/', include("ExhibitPage.urls")),
     path('admin/', admin.site.urls),
+=======
+
+#2FA
+from django.contrib.auth.models import User #Django default user model
+
+from django_otp.admin import OTPAdminSite
+from django_otp.plugins.otp_totp.models import TOTPDevice
+from django_otp.plugins.otp_totp.admin import TOTPDeviceAdmin
+
+class OTPAdmin(OTPAdminSite):
+    pass
+#Register models from OTP package
+admin_site = OTPAdmin(name='OTPAdmin')
+admin_site.register(User)
+admin_site.register(TOTPDevice, TOTPDeviceAdmin)
+
+urlpatterns = [
+    path('ExhibitPage/', include("ExhibitPage.urls")),
+    
+    #Honeypot path
+    path('admin/', include('admin_honeypot.urls')),
+    
+    #Actual admin path
+    path('GlazerStaff/', admin.site.urls),
+    
+>>>>>>> main
     path('', include("SplashPage.urls")),
 ]
