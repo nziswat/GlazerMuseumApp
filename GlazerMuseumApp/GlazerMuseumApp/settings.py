@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ExhibitPage.apps.ExhibitpageConfig',
     'SplashPage.apps.SplashpageConfig',
+    'Login.apps.LoginConfig',
+    'About.apps.AboutConfig',
     #Admin Honeypot app
     'admin_honeypot',
     #2FA

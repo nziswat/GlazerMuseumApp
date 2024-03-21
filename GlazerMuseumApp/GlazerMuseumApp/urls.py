@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from Login import views as login_views 
+from About import views as about_views 
 
 #2FA
 from django.contrib.auth.models import User #Django default user model
@@ -33,6 +35,9 @@ admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 urlpatterns = [
     path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
+    
+    path('login/', login_views.login_page, name='login'),  # URL pattern for the login page
+    path('about/', about_views.about_page, name='about_page'),  # URL pattern for the about page
     
     #Honeypot path
     path('admin/', include('admin_honeypot.urls')), 

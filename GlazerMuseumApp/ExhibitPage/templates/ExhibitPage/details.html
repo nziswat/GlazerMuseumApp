@@ -1,24 +1,76 @@
-{% if ExText %}
-<ul>
-    <p>{{ExText.titleText}}</p>
-    <p>{{ExText.descText}}</p>
-</ul>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glazer's Children Museum</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gcm.css' %}">
+    <!-- Add viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add CSS link for your styles -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- GCM LOGO -->
+        <a href="#top">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+        </a>
+        <!--NAVBAR-->
+        <nav>
+            <div class="navbar">
+                <a href="#home" id="home-link" class="nav-link">Home</a>
+                <a href="#exhibits" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="#about" id="about-link" class="nav-link">About Us</a>
+                <a href="#contact" id="contact-link" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-<img src={{ExText.imagePath}} alt="Image" />
+<!-- Exhibits Container -->
+<section id="exhibits" style="text-align: center;">
+    <h2 id="exhibits-title" style="font-family: Arial, sans-serif; color: black; font-size: 32px;">{% if ExText %}{{ ExText.titleText }}{% else %}Exhibits{% endif %}</h2>
+    <p>
+    {% if exhibitList %}
+        <ul style="list-style-type: none; padding: 0;">
+            {% for ExText in exhibitList %}
+                <li style="margin-bottom: 8px; font-size: 20px;">
+                    <a href="/ExhibitPage/{{ ExText.id }}" style="text-decoration: none; color: black;">{{ ExText.titleText }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {% if not ExText %}
+            <p>There are no exhibits at this moment.</p>
+        {% endif %}
+    {% endif %}
+    </p>
+</section>
 
-
-
-<form action="{% url 'vote' exid %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        {% for play in plays %}
-        <input type="checkbox" name="plays[]" id="play{{ forloop.counter }}" value="{{ play.id }}">
-        <label for="play{{ forloop.counter }}">{{ play }} DEBUG VOTES: {{ play.votes }}<br /></label>
-        {% endfor %}
-    </fieldset>
-    <input type="submit" value="Vote">
-</form>
-
-{% else %}
-<p>An error has occured displaying this exhibit.</p>
-{% endif %}
+<!-- Exhibit Details Section -->
+<section id="exhibit-details" style="text-align: center;">
+    {% if ExText %}
+        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+            <ul style="list-style-type: none; text-align: center; margin: 0 auto; width: fit-content;">
+                <li>{{ ExText.titleText }}</li>
+                <li>{{ ExText.descText }}</li>
+            </ul>
+            <!-- Center the image -->
+            <img src="{{ ExText.imagePath }}" alt="Image">
+            <form action="{% url 'vote' ExText.id %}" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    {% for play in plays %}
+                        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play }}">
+                        <label for="play{{ forloop.counter }}">{{ play }} DEBUG VOTES: {{ play.votes }}<br /> </label>
+                    {% endfor %}
+                </fieldset>
+                <input type="submit" value="Vote">
+            </form>
+        </div>
+    {% else %}
+        <h2 style="font-family: Arial, sans-serif; color: black; font-size: 32px;">Select an Exhibit</h2>
+    {% endif %}
+</section>
+</body>
+</html>

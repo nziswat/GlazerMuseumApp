@@ -27,27 +27,10 @@
         </nav>
     </header>
 
-
-
-<!-- Exhibits Container -->
-<section id="exhibits">
-    <h2 style="text-align: center; font-family: Arial, sans-serif; color: black; font-size: 32px;">Exhibits</h2>
-    <p>
-    {% if exhibitList %}
-    <ul style="list-style-type: none; padding: 0;">
-        {% for ExText in exhibitList %}
-        <li style="margin-bottom: 8px; font-size: 20px;">
-            <a href="/ExhibitPage/{{ ExText.id }}" style="text-decoration: none; color: black;">{{ ExText.titleText }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>There are no exhibits at this moment.</p>
-    {% endif %}
-    </p>
-</section>
-
-
-
+    <!-- About Us -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>This is a test paragraph for the About Us section. You can add your content here to describe your museum, its mission, history, and any other relevant information.</p>
+    </section>
 </body>
 </html>

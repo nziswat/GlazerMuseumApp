@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                Admin Login
+            </div>
+        </div>
+        <div>
+            <img class="logo" src="{% static 'gcmlogoupdated_copy.png' %}" alt="">
+        </div>
+        <div class="form-container">
+         <div class="form-inner">
+             <form action="#" class="login">
+                 <div class="field">
+                     <input type="text" placeholder="Username" required>
+                 </div>
+                 <div class="field">
+                     <input type="password" placeholder="Password" required>
+                 </div>
+                 <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Login">
+                 </div>
+             </form>
+         </div>
+     </div>         
+</body>
+</html>
