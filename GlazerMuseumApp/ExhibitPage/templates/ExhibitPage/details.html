@@ -57,7 +57,7 @@
             </ul>
             <!-- Center the image -->
             <img src="{{ ExText.imagePath }}" alt="Image">
-            <form action="{% url 'vote' ExText.id %}" method="post">
+            <form action="{% url 'ExhibitPage:vote' ExText.id %}" method="post">
                 {% csrf_token %}
                 <fieldset>
                     {% for play in plays %}
