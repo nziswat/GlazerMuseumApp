@@ -10,7 +10,7 @@ from django.utils import timezone
     
 
 class PlayTypes(models.Model): #Contains all the plays perhaps in the future code to be specific to exhibit, for now just display all and allow all to be recorded(Proof of Concept)
-    playList=[]
+    plays = models.ManyToManyField('Play', blank=True)
     setName = models.CharField(max_length=100, default='default')
     
     def __str__(self):
@@ -23,26 +23,37 @@ class PlayTypes(models.Model): #Contains all the plays perhaps in the future cod
 class Play(models.Model): #Each play itself, is an object maybe in the future admins decide they want more 
     playName = models.CharField(max_length=200, default='')
     playDescription = models.CharField(max_length=200, default='')
-    votes = [] #store vote objects in hee'ah
-    #votes = models.IntegerField(default=0) #This SHOULD NOT BE GLOBAL, this must be tied directly to an exhibit via PlayTypes
-    playSet = models.ForeignKey(PlayTypes, on_delete=models.CASCADE) #figure this out because we don't want duplicate plays (we don't need it)
-    #find a way to tie it into each exhibit     
+    #votes = models.IntegerField(default=0) #This SHOULD NOT BE GLOBAL, this must be tied directly to an exhibit via PlayTypes    
 
+
+    def save(self, *args, **kwargs): #overwrites 
+        is_new = self._state.adding
+        super(Play, self).save(*args, **kwargs)
+        if is_new:
+            default_playtype, created = PlayTypes.objects.get_or_create(setName='default')
+            default_playtype.plays.add(self)
     
     def __str__(self):
         return self.playName
     
-    def addvote(self,exhibit,cookie): #proof of concept, no security no verification
-        newvote = Vote(play=self,exhibit=exhibit,cookie=cookie)
-        self.votes.append(newvote)
-        
+    def addvote(self,exhibit,cookie): #TODO: make unique or at least try 
+        #I am considering assigning an RNG number to each user in their cookiez Not exactly secure or even reliable but good enough probably
+        newvote = Vote.objects.create(play=self,exhibit=exhibit,cookie=cookie)        
 
 class ExText(models.Model): #perhaps change ExText to ExhibitData, since it's grown out of hand.
     titleText= models.CharField(max_length=200, default='')
     descText= models.CharField(max_length=200, blank=True)
     imagePath= models.CharField(max_length=200, blank=True)
-    exhibitPlays = models.OneToOneField(PlayTypes, on_delete=models.CASCADE) #1:1, but figure out a possible handling for default
+    playTypes = models.ForeignKey(PlayTypes, on_delete=models.SET_NULL, null=True, blank=True)
+   
 
+    def get_play_types(self): #Basically will either the set playset or just pick the default set (which has everything)
+        if self.playTypes:
+            return self.playTypes.plays.all()
+        #otherwise, return the plays from the default playTypes
+        default_playTypes = PlayTypes.objects.get(setName='default')
+        return default_playTypes.plays.all()
+    
     
     def __str__(self):
         return self.titleText

@@ -61,8 +61,8 @@
                 {% csrf_token %}
                 <fieldset>
                     {% for play in plays %}
-                        <input type="checkbox" name="play" id="play{{ forloop.counter }}" value="{{ play }}">
-                        <label for="play{{ forloop.counter }}">{{ play }} DEBUG VOTES: {{ play.votes }}<br /> </label>
+                        <input type="checkbox" name="plays[]" id="play{{ forloop.counter }}" value="{{ play }}">
+                        <label for="play{{ forloop.counter }}">{{ play }}<br /> </label>
                     {% endfor %}
                 </fieldset>
                 <input type="submit" value="Vote">
