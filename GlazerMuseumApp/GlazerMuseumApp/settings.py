@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #verify the cookies uniquely
+    'ExhibitPage.verification.VerifyUser', 
      #2FA stuff
     'django_otp.middleware.OTPMiddleware',
 

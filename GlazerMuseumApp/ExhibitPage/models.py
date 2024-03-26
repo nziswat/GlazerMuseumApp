@@ -36,9 +36,10 @@ class Play(models.Model): #Each play itself, is an object maybe in the future ad
     def __str__(self):
         return self.playName
     
-    def addvote(self,exhibit,cookie): #TODO: make unique or at least try 
-        #I am considering assigning an RNG number to each user in their cookiez Not exactly secure or even reliable but good enough probably
-        newvote = Vote.objects.create(play=self,exhibit=exhibit,cookie=cookie)        
+    
+
+    def addvote(self,exhibit,cookie): #Adds
+        newvote= Vote.objects.create(cookie=cookie,exhibit=exhibit,play=self) #re-add the votes back into the database
 
 class ExText(models.Model): #perhaps change ExText to ExhibitData, since it's grown out of hand.
     titleText= models.CharField(max_length=200, default='')
@@ -66,6 +67,4 @@ class Vote(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)  # automatically set the field to now when the object is first created.
 
     def __str__(self):
-        return f"Vote for {self.play} on {self.timestamp}, {self.exhibit}"
-    
-
+        return f"Vote for {self.play} on {self.timestamp}, at {self.exhibit} by {self.cookie}"

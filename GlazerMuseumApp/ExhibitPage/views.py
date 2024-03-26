@@ -1,8 +1,7 @@
 #exhibit page view
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.db.models import F
-
+from django.urls import reverse
 from .models import ExText, PlayTypes, Play, Vote
 
 def index(request):
@@ -23,18 +22,23 @@ def details(request,ExText_id):
    # plays= {"plays":}
     return HttpResponse(template.render(context,request)) #only takes two args, pass all to context
 
-def vote(request, ExText_id):
+def vote(request, ExText_id): #TODO: redirect back to exhibits, maybe give a thank you or something
+    unique_id = getattr(request, 'unique_id', None) #gets the unique ID generated for the user 
     exhibit = ExText.objects.get(id=ExText_id)
     plays = exhibit.get_play_types() #get the list of plays in the exhibit's play set     
     choices = request.POST.getlist('plays[]') #filter the plays by the plays selected with the vote
     selected_plays = plays.filter(playName__in=choices) #
-
+    purgingVotes = Vote.objects.filter(cookie=unique_id, exhibit=exhibit) #get all votes that match the cookie and exhibit
+    purgingVotes.delete() #just delete them
 
     for each in selected_plays:  #pick each play and add a vote by exhibit and cookie
         #Time stamp is handled by the vote creation itself
-        each.addvote(exhibit,'123debug123')
+        each.addvote(exhibit,unique_id)
         each.save()
 
-    return HttpResponse(selected_plays)
-    
-    
+
+    referer_url = request.META.get('HTTP_REFERER')
+    if referer_url: #go back to the previous page
+        return HttpResponseRedirect(referer_url)
+    else: #or return to the exhibits list by default, if this for some reason fails
+        return HttpResponseRedirect(reverse('exhibits:index'))
