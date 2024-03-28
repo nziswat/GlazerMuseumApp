@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from .models import ExText, PlayTypes, Play, Vote
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+
 
 def index(request):
     exhibitList = ExText.objects.all()
@@ -11,6 +14,7 @@ def index(request):
 
     return HttpResponse(template.render(context,request))
 
+@ensure_csrf_cookie
 def details(request,ExText_id):
     
 
