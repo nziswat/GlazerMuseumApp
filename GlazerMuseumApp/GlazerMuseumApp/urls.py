@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from Login import views as login_views 
 from About import views as about_views 
+from django.conf.urls.static import static
+from django.conf import settings
+import os
+
+
 
 #2FA
 from django.contrib.auth.models import User #Django default user model
@@ -33,6 +38,9 @@ admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
+
+
+
 urlpatterns = [
     path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
     
@@ -44,4 +52,4 @@ urlpatterns = [
     path('GlazerStaff/', admin.site.urls),
     
     path('', include("SplashPage.urls")),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

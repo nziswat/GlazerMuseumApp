@@ -56,7 +56,7 @@
                 <li>{{ ExhibitData.descText }}</li>
             </ul>
             <!-- Center the image -->
-            <img src="{{ ExhibitData.imagePath }}" alt="Image">
+            <img src="{{ ExhibitData.image.url }}" alt="Image">
             <form action="{% url 'ExhibitPage:vote' ExhibitData.id %}" method="post">
                 {% csrf_token %}
                 <fieldset>
