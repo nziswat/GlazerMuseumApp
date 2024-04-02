@@ -6,28 +6,28 @@
 from django.http import HttpResponse, HttpResponseRedirect 
 from django.template import loader
 from django.urls import reverse
-from .models import ExText, PlayTypes, Play, Vote
+from .models import ExhibitData, PlaySet, Play, Vote
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 
 def index(request): #index is the base view, displays all the exhibits in a list.
-    exhibitList = ExText.objects.all() 
+    exhibitList = ExhibitData.objects.all() 
     template = loader.get_template("ExhibitPage/index.html")
     context = {"exhibitList":exhibitList}
     return HttpResponse(template.render(context,request)) #only takes two args, pass all to context, all the tempaltes work like this
 
 @ensure_csrf_cookie #csrf_cookie used for user verification and 'security'
-def details(request,ExText_id): #details is as it says, show the details for the exhibit.
-    exhibitText = ExText.objects.get(pk=ExText_id)
+def details(request,ExhibitData_id): #details is as it says, show the details for the exhibit.
+    exhibitText = ExhibitData.objects.get(pk=ExhibitData_id)
     playset = exhibitText.get_play_types()
     template = loader.get_template("ExhibitPage/details.html")
-    context = {"ExText":exhibitText,"plays":playset.all(),"exid":ExText_id}
+    context = {"ExhibitData":exhibitText,"plays":playset.all(),"exid":ExhibitData_id}
     return HttpResponse(template.render(context,request)) 
 
-def vote(request, ExText_id): #vote 'page' redirects straight back to previous page (should be details)
+def vote(request, ExhibitData_id): #vote 'page' redirects straight back to previous page (should be details)
     unique_id = getattr(request, 'unique_id', None) #gets the unique ID generated for the user 
-    exhibit = ExText.objects.get(id=ExText_id)
+    exhibit = ExhibitData.objects.get(id=ExhibitData_id)
     plays = exhibit.get_play_types() #get the list of plays in the exhibit's play set     
     choices = request.POST.getlist('plays[]') #filter the plays by the plays selected with the vote
     selected_plays = plays.filter(playName__in=choices) 

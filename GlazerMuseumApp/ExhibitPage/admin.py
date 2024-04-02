@@ -4,9 +4,9 @@
 
 from django.contrib import admin
 
-from .models import ExText, Play, PlayTypes, Vote
+from .models import ExhibitData, Play, PlaySet, Vote
 
-admin.site.register(ExText)
+admin.site.register(ExhibitData)
 admin.site.register(Play)
-admin.site.register(PlayTypes)
+admin.site.register(PlaySet)
 admin.site.register(Vote)
