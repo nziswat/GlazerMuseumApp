@@ -3,3 +3,6 @@ Install these packages in your own envirement for the Honeypot and 2FA to work:
 pip install django
 pip install django-otp qrcode
 pip install django-admin-honeypot-updated-2021
+
+Install this for images, use terminal:
+python -m pip install Pillow
