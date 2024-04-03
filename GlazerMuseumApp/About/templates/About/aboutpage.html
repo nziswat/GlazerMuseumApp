@@ -13,16 +13,16 @@
     <!-- Header -->
     <header>
         <!-- GCM LOGO -->
-        <a href="#top">
+        <a href="{% url 'SplashPage:index' %}">
             <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
         </a>
         <!--NAVBAR-->
         <nav>
             <div class="navbar">
-                <a href="#home" id="home-link" class="nav-link">Home</a>
-                <a href="#exhibits" id="exhibits-link" class="nav-link">Exhibits</a>
-                <a href="#about" id="about-link" class="nav-link">About Us</a>
-                <a href="#contact" id="contact-link" class="nav-link">Contact</a>
+                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
+                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
             </div>
         </nav>
     </header>

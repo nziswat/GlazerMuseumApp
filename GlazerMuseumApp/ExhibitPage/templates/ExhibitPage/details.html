@@ -13,34 +13,34 @@
     <!-- Header -->
     <header>
         <!-- GCM LOGO -->
-        <a href="#top">
+        <a href="{% url 'SplashPage:index' %}">
             <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
         </a>
         <!--NAVBAR-->
         <nav>
             <div class="navbar">
-                <a href="#home" id="home-link" class="nav-link">Home</a>
-                <a href="#exhibits" id="exhibits-link" class="nav-link">Exhibits</a>
-                <a href="#about" id="about-link" class="nav-link">About Us</a>
-                <a href="#contact" id="contact-link" class="nav-link">Contact</a>
+                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
+                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
             </div>
         </nav>
     </header>
 
 <!-- Exhibits Container -->
 <section id="exhibits" style="text-align: center;">
-    <h2 id="exhibits-title" style="font-family: Arial, sans-serif; color: black; font-size: 32px;">{% if ExhibitData %}{{ ExhibitData.titleText }}{% else %}Exhibits{% endif %}</h2>
+    <h2 id="exhibits-title" style="font-family: Arial, sans-serif; color: black; font-size: 32px;">{% if ExText %}{{ ExText.titleText }}{% else %}Exhibits{% endif %}</h2>
     <p>
     {% if exhibitList %}
         <ul style="list-style-type: none; padding: 0;">
-            {% for ExhibitData in exhibitList %}
+            {% for ExText in exhibitList %}
                 <li style="margin-bottom: 8px; font-size: 20px;">
-                    <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none; color: black;">{{ ExhibitData.titleText }}</a>
+                    <a href="/ExhibitPage/{{ ExText.id }}" style="text-decoration: none; color: black;">{{ ExText.titleText }}</a>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        {% if not ExhibitData %}
+        {% if not ExText %}
             <p>There are no exhibits at this moment.</p>
         {% endif %}
     {% endif %}
@@ -49,15 +49,15 @@
 
 <!-- Exhibit Details Section -->
 <section id="exhibit-details" style="text-align: center;">
-    {% if ExhibitData %}
+    {% if ExText %}
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
             <ul style="list-style-type: none; text-align: center; margin: 0 auto; width: fit-content;">
-                <li>{{ ExhibitData.titleText }}</li>
-                <li>{{ ExhibitData.descText }}</li>
+                <li>{{ ExText.titleText }}</li>
+                <li>{{ ExText.descText }}</li>
             </ul>
             <!-- Center the image -->
-            <img src="{{ ExhibitData.image.url }}" alt="Image">
-            <form action="{% url 'ExhibitPage:vote' ExhibitData.id %}" method="post">
+            <img src="{{ ExText.imagePath }}" alt="Image">
+            <form action="{% url 'ExhibitPage:vote' ExText.id %}" method="post">
                 {% csrf_token %}
                 <fieldset>
                     {% for play in plays %}

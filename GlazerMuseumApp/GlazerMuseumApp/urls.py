@@ -18,11 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from Login import views as login_views 
 from About import views as about_views 
-from django.conf.urls.static import static
-from django.conf import settings
-import os
-
-
+from Contact import views as contact_views
 
 #2FA
 from django.contrib.auth.models import User #Django default user model
@@ -38,18 +34,16 @@ admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
-
-
-
 urlpatterns = [
     path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
     
     path('login/', login_views.login_page, name='login'),  # URL pattern for the login page
     path('about/', about_views.about_page, name='about_page'),  # URL pattern for the about page
-    
+    path('contact/', contact_views.contact_page, name='contact_page'),  # URL pattern for the about page
+
     #Honeypot path
     path('admin/', include('admin_honeypot.urls')), 
     path('GlazerStaff/', admin.site.urls),
     
-    path('', include("SplashPage.urls")),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),
+]
