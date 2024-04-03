@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glazer's Children Museum</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gcm.css' %}">
+    <!-- Add viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add CSS link for your styles -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- GCM LOGO -->
+        <a href="{% url 'SplashPage:index' %}">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+        </a>
+        <!--NAVBAR-->
+        <nav>
+            <div class="navbar">
+                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
+                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Information -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> johndoe@example.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+            <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+            <p><strong>Main Website:</strong> <a href="https://glazermuseum.org/" target="_blank">https://glazermuseum.org/</a></p>
+        </div>
+    </section>
+</body>
+</html>
