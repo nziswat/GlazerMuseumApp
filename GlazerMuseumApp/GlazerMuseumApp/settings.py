@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'SplashPage.apps.SplashpageConfig',
     'Login.apps.LoginConfig',
     'About.apps.AboutConfig',
+    'Contact.apps.ContactConfig',
     #Admin Honeypot app
     'admin_honeypot',
     #2FA
