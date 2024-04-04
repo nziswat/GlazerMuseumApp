@@ -1,0 +1,18 @@
+// vercel-django-example/vercel.json
+// https://github.com/jayhale/vercel-django-example/blob/main/vercel.json#L1
+
+{
+  "builds": [
+    {
+      "src": "GlazerMuseumApp/wsgi.py",
+      "use": "@ardnt/vercel-python-wsgi",
+      "config": { "maxLambdaSize": "15mb" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "GlazerMuseumApp/wsgi.py"
+    }
+  ]
+}
