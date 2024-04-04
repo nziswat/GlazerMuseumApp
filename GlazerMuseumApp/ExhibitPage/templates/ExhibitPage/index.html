@@ -34,9 +34,9 @@
     <p>
     {% if exhibitList %}
     <ul style="list-style-type: none; padding: 0;">
-        {% for ExText in exhibitList %}
+        {% for ExhibitData in exhibitList %}
         <li style="margin-bottom: 8px; font-size: 20px;">
-            <a href="/ExhibitPage/{{ ExText.id }}" style="text-decoration: none; color: black;">{{ ExText.titleText }}</a>
+            <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none; color: black;">{{ ExhibitData.titleText }}</a>
         </li>
         {% endfor %}
     </ul>

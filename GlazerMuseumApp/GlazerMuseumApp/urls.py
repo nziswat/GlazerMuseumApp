@@ -19,6 +19,9 @@ from django.urls import path, include
 from Login import views as login_views 
 from About import views as about_views 
 from Contact import views as contact_views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 #2FA
 from django.contrib.auth.models import User #Django default user model
@@ -46,4 +49,4 @@ urlpatterns = [
     path('GlazerStaff/', admin.site.urls),
     
     path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
