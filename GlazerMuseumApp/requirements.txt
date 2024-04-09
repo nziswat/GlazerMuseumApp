@@ -1,6 +1,4 @@
-#edited on 4/4/24 to allign with requirements standards.
-
-asgiref==3.7.2
+﻿asgiref==3.7.2
 charset-normalizer==2.1.1
 colorama==0.4.6
 Django==4.2.9
