@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +21,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3d7sqpj1m)nwbb-5c(#vf@_8e65(*c^m&-#lt^e#gu^ads2^xf'
+SECRET_KEY = get_random_secret_key()
+# Basic configurations
+ALLOWED_HOSTS = ['yourdomain.com']
+
+# Security settings
+SECURE_SSL_REDIRECT = True
+
+# Set HTTP Strict Transport Security (HSTS) to enforce HTTPS on all connections.
+# This tells browsers to remember that the site should only be accessed using HTTPS.
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+
+# Include subdomains in the HSTS policy to ensure all subdomains are also accessed via HTTPS.
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# Allow the HSTS policy to be included in browsers' preload lists.
+# This makes it more effective against SSL stripping attacks.
+SECURE_HSTS_PRELOAD = True
+
+# Marks the session cookie as secure, instructing browsers to only send it via HTTPS.
+SESSION_COOKIE_SECURE = True
+
+# Marks the CSRF cookie as secure, instructing browsers to only send it via HTTPS.
+# This reduces the risk of interception in non-secure environments.
+CSRF_COOKIE_SECURE = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +71,7 @@ INSTALLED_APPS = [
     #2FA
     'django_otp',
     'django_otp.plugins.otp_totp',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
