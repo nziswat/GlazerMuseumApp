@@ -22,31 +22,37 @@ from Contact import views as contact_views
 from django.conf.urls.static import static
 from django.conf import settings
 
-
-#2FA
-from django.contrib.auth.models import User #Django default user model
-
+# 2FA
+from django.contrib.auth.models import User  # Django default user model
 from django_otp.admin import OTPAdminSite
 from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_otp.plugins.otp_totp.admin import TOTPDeviceAdmin
 
 class OTPAdmin(OTPAdminSite):
     pass
-#Register models from OTP package
+
+# Register models from OTP package
 admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 urlpatterns = [
-    path('ExhibitPage/', include("ExhibitPage.urls",namespace='ExhibitPage')),
-    
-    path('login/', login_views.login_page, name='login'),  # URL pattern for the login page
-    path('about/', about_views.about_page, name='about_page'),  # URL pattern for the about page
-    path('contact/', contact_views.contact_page, name='contact_page'),  # URL pattern for the about page
+    # URL pattern for the ExhibitPage app
+    path('ExhibitPage/', include("ExhibitPage.urls", namespace='ExhibitPage')),
 
-    #Honeypot path
-    path('admin/', include('admin_honeypot.urls')), 
-    path('GlazerStaff/', admin.site.urls),
+    # URL pattern for the login page
+    path('GlazerStaff/', login_views.login_page, name='login_page'),  # Updated name to 'login_page'
     
+    # URL pattern for the about page
+    path('about/', about_views.about_page, name='about_page'),  
+
+    # URL pattern for the contact page
+    path('contact/', contact_views.contact_page, name='contact_page'),  
+
+    # URL pattern for the Django admin page
+    path('admin/', admin.site.urls, name='admin'),  
+
+    # URL pattern for the SplashPage app
     path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

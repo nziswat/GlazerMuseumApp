@@ -19,12 +19,13 @@
         </div>
         <div class="form-container">
          <div class="form-inner">
-             <form action="#" class="login">
+             <form method="post" action="{% url 'login_page' %}" class="login">
+                 {% csrf_token %}
                  <div class="field">
-                     <input type="text" placeholder="Username" required>
+                     <input type="text" name="username" placeholder="Username" required>
                  </div>
                  <div class="field">
-                     <input type="password" placeholder="Password" required>
+                     <input type="password" name="password" placeholder="Password" required>
                  </div>
                  <div class="field btn">
                      <div class="btn-layer"></div>

@@ -1,0 +1,232 @@
+/* Default styles for larger screens */
+body {
+    background-color: #32b3d3d1; /* Light blue background color */
+    color: #75585888; /* Text color */
+    font-family: Arial, sans-serif; /* Font family */
+    line-height: 1.6; /* Set line height */
+    margin: 0; /* Remove default body margin */
+}
+
+/* Media query for screens with a maximum width of 768 pixels (typical for tablets) */
+@media (max-width: 768px) {
+    /* Adjust styles for tablets and smaller screens */
+    body {
+        font-size: 1rem; /* Reduce font size for better readability on smaller screens */
+    }
+
+    section {
+        padding: 2%; /* Reduce section padding */
+    }
+
+    .navbar {
+        display: none; /* Hide the regular navbar on smaller screens */
+    }
+
+    .hamburger-menu {
+        display: block; /* Display the hamburger menu on smaller screens */
+    }
+
+    /* Additional styles for the hamburger icon */
+    .hamburger-icon {
+        display: block; /* Display the hamburger icon */
+        cursor: pointer; /* Add cursor pointer to indicate clickability */
+    }
+
+    /* Hide the hamburger content by default */
+    .hamburger-content {
+        display: none;
+    }
+
+    /* Styling for the hamburger lines */
+    .hamburger-icon .line {
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        margin: 5px 0;
+    }
+}
+
+/* Media query for screens with a maximum width of 480 pixels (typical for mobile devices) */
+@media (max-width: 480px) {
+    /* Adjust styles for mobile devices */
+    body {
+        font-size: 0.875rem; /* Further reduce font size for smaller screens */
+    }
+    
+    section {
+        padding: 1%; /* Reduce section padding for mobile */
+    }
+}
+
+/* Apply a background color and set text color for the body */
+/* Moved to the top for better organization */
+
+/* Style the sections with a red background */
+section {
+    background-color: rgba(255, 255, 255, 0.2); /* Soft red background color */
+    padding: 2%;
+ /* White border around the sections */
+    margin: 1%;
+    text-align: center;
+    color: #0d0d0d; /* Text color for the sections */
+}
+
+/* Style the header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    background-color: #960ac9d1;
+    color: #000000;
+    font-family: Arial, sans-serif;
+}
+.logo {
+    max-width: 35%; /* Ensures the logo image doesn't exceed its container */
+    height: auto; /* Allows the height to adjust proportionally */
+    width: auto; /* Allows the width to adjust proportionally */
+}
+
+
+/* banner */
+#banner {
+    display: flex;
+}
+
+#banner > div {
+    flex: 1;
+}
+
+.slider {
+    position: relative;
+    width: 100%; /* Full width */
+    max-width: 1000px; /* Maximum width of the slider */
+    height: auto; /* Adjust based on your preference */
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.slider img {
+    width: 100%; /* Ensures image width is responsive and fits the container */
+    max-height: 500px; /* Maximum height of images */
+    object-fit: contain; /* Ensures the image is scaled to maintain its aspect ratio, might add letterboxing */
+    object-position: center; /* Centers the image within the container */
+    display: none; /* Hide all slides by default */
+}
+
+
+img.displaySlide{
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+.slider button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background-color: rgb(82, 79, 79);
+    color: wheat;
+    border: none;
+    cursor: pointer;
+}
+.previous {
+    left: 0;
+}
+.next{
+    right: 0;
+}
+@keyframes fade { 
+    from{opacity: .5}
+    to {opacity: 1;}
+}
+/* Navbar styling */
+#navbar {
+  /* Navbar styling */
+    background-color: rgba(255, 255, 255, 0); /* Purple background color for the navbar */
+    height: auto; /* Set the height of the navbar */
+    width: auto; /* Set the width of the navbar */
+    display: flex; /* Make the navbar items horizontal */
+ /* Evenly space the navbar items */
+    align-items: center; /* Center the navbar items vertically */
+    padding: 1rem 2rem; /* Adjust padding as needed */
+}
+
+#banner{
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: justify;
+    color: rgb(255, 253, 253);
+    padding-left: 1%;
+}
+
+/* Home button */
+#home-link,
+#exhibits-link,
+#about-link,
+#contact-link {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin-right: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#home-link { margin-right: 2%; }
+#exhibits-link { margin-right: 2%; }
+#about-link {
+    margin-right: ;
+    padding-top: 0%;
+    line-height: rem;
+}
+#contact-link { padding: top 0;rem; }
+
+/* Header logo */
+.logo {
+    border-radius: 2rem;
+    max-width: 35%;
+    height: auto;
+    margin-right: auto;
+}
+
+/*h1 padding*/
+h1 { 
+    padding-right: 3%; /* Adjust padding as needed */
+}
+
+/* Style the "Scroll to Top" button */
+#scrollToTopButton {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    display: none;
+    background-color: #ffffff;
+    color: #ffffff;
+    padding: 1% 2%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* About section */
+#AboutUs { /* Changed ID to match HTML */
+    background-color: #000000; /* Example background color */
+    padding: 6%;
+    text-align: center; /* Center the content */
+}
+
+#AboutUs img { /* Changed ID to match HTML */
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+    margin: 1%; /* Add some space around each image */
+    border-radius: 10px; /* Optional: Adds rounded corners to images */
+}
+#slideshow img{
+    size: 100px;
+}
+
+/* Footer */
+#footer {
+    color: black;
+}
