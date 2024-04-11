@@ -1,0 +1,194 @@
+/* Default styles for larger screens */
+body {
+    background-color: #32b3d3d1; /* Light blue background color */
+    color: #75585888; /* Text color */
+    font-family: Arial, sans-serif; /* Font family */
+    line-height: 1.6; /* Set line height */
+    margin: 0; /* Remove default body margin */
+}
+
+/* Apply a background color and set text color for the body */
+/* Moved to the top for better organization */
+
+/* Style the sections with a red background */
+section {
+    background-color: rgba(255, 255, 255, 0.2); /* Soft red background color */
+    padding: 2%;
+    margin: 1%;
+    text-align: center;
+    color: #0d0d0d; /* Text color for the sections */
+}
+
+/* Style the header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    background-color: #960ac9d1;
+    color: #000000;
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.logo {
+    max-width: 40%;
+    height: auto;
+    border-radius: 2rem;
+    margin-right: auto;
+}
+
+/* Banner */
+#banner {
+    display: flex;
+}
+
+#banner > div {
+    flex: 1;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.slides {
+    position: relative; /* Ensure the slideshow images are positioned relative to the slideshow */
+}
+
+
+.slider img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    object-position: center;
+    display: none;
+}
+
+img.displaySlide {
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+ /* Style for slideshow buttons */
+.slider-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    background-color: transparent; /* Transparent background for the buttons */
+}
+
+
+
+.slider-buttons button {
+    background-color: #ccc; /* Grey background for the slideshow buttons */
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    padding: 10px; /* Adjust padding for button size */
+}
+
+.previous {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+@keyframes fade { 
+    from {
+        opacity: .5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Navbar styling */
+.navbar {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    font-size: 1.8rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin-left: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px 15px;
+    background-color:  #32b3d3d1 !important; /* Corrected border definition */
+    border-radius: 20px;
+}
+
+/* Navbar icons */
+.navbar .nav-icon {
+    font-size: 1.5rem; /* Adjust the size of the icons */
+    margin-right: 10px; /* Optional: Add some spacing between icons */
+}
+
+/* About section */
+#AboutUs {
+    background-color: #000000;
+    padding: 6%;
+    text-align: center;
+}
+
+#AboutUs img {
+    max-width: 100%;
+    height: auto;
+    margin: 1%;
+    border-radius: 1rem;
+}
+
+/* Footer */
+#footer {
+    color: black;
+}
+
+/* Style for back-to-top button */
+.back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #960ac9d1;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+    
+            /* Style for welcome message */
+.welcome-message {
+    padding-right: 20px; /* Adjust spacing between the welcome message and slideshow */
+}
+    
+.welcome-message h2,
+.welcome-message p {
+    margin: 0; /* Remove default margins */
+}
+
+
