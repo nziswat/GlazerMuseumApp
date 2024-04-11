@@ -56,6 +56,12 @@ header {
     overflow: hidden;
 }
 
+
+.slides {
+    position: relative; /* Ensure the slideshow images are positioned relative to the slideshow */
+}
+
+
 .slider img {
     width: 100%;
     max-height: 500px;
@@ -70,15 +76,29 @@ img.displaySlide {
     animation-duration: 1.5s;
 }
 
-.slider button {
+ /* Style for slideshow buttons */
+.slider-buttons {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
-    background-color: rgb(82, 79, 79);
-    color: wheat;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    background-color: transparent; /* Transparent background for the buttons */
+}
+
+
+
+.slider-buttons button {
+    background-color: #ccc; /* Grey background for the slideshow buttons */
     border: none;
+    font-size: 24px;
+    color: white;
     cursor: pointer;
+    outline: none;
+    padding: 10px; /* Adjust padding for button size */
 }
 
 .previous {
@@ -143,4 +163,30 @@ img.displaySlide {
 /* Footer */
 #footer {
     color: black;
+}
+
+/* Style for back-to-top button */
+.back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #960ac9d1;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+    
+            /* Style for welcome message */
+.welcome-message {
+    padding-right: 20px; /* Adjust spacing between the welcome message and slideshow */
+}
+    
+.welcome-message h2,
+.welcome-message p {
+    margin: 0; /* Remove default margins */
 }
