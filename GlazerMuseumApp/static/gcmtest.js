@@ -1,70 +1,48 @@
-// gcmtest.js
+// Image SLider
+const slides = document.querySelectorAll(".slides img");
+let slideIndex = 0
+let IntervalId = null;
 
-// Initialize slide index
-var slideIndex = 0;
+//Initialize Slider
+document.addEventListener("DOMContentLoaded", initializeSlider);
 
-// Function to show slides
-function showSlides() {
-    var slides = document.getElementsByClassName("slide");
-    
-    // Hide all slides
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    
-    // Increment slide index
-    slideIndex++;
-    
-    // Reset slide index if it exceeds the number of slides
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    
-    // Display the current slide
-    slides[slideIndex - 1].style.display = "block";
+
+function initializeSlider(){
+    if(slides.length > 0){
+        slides [slideIndex].classList.add("displaySlide");
+        IntervalId = setInterval(nextSlide, 5000);
 }
 
-// Function to show previous slide
-function prevSlide() {
-    var slides = document.getElementsByClassName("slide");
-    
-    // Decrement slide index
+}
+function showSlide(index) {
+
+    if(index >= slides.length){
+        slideIndex = 0;
+
+    }
+    else if (index < 0){
+        slideIndex = slides.length - 1
+    }
+    slides.forEach(slide => { 
+        slide.classList.remove("displaySlide");
+    });
+    slides[slideIndex].classList.add("displaySlide");
+
+}
+function prevSlide(){
+    clearInterval(IntervalId);
     slideIndex--;
-    
-    // Reset slide index if it goes below 1
-    if (slideIndex < 1) {
-        slideIndex = slides.length;
-    }
-    
-    // Hide all slides
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    
-    // Display the current slide
-    slides[slideIndex - 1].style.display = "block";
-}
+    showSlide(slideIndex);
 
-// Function to show next slide
-function nextSlide() {
-    var slides = document.getElementsByClassName("slide");
-    
-    // Increment slide index
+}
+function nextSlide(){
     slideIndex++;
-    
-    // Reset slide index if it exceeds the number of slides
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    
-    // Hide all slides
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    
-    // Display the current slide
-    slides[slideIndex - 1].style.display = "block";
-}
+    showSlide(slideIndex);
 
-// Call the showSlides function to start the slideshow
-showSlides();
+}
+function toggleMenu() {
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
+}
