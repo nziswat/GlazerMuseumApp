@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glazer's Children Museum - Report a Problem</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gcmtest.css' %}">
+    <!-- Add viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add CSS link for your styles -->
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- GCM LOGO -->
+        <a href="{% url 'SplashPage:index' %}">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+        </a>
+        <!--NAVBAR-->
+        <nav>
+            <div class="navbar">
+                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
+                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
+                <a href="{% url 'report_page' %}" id="contact-link" class="nav-link">Report</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Report a Problem Section -->
+    <section id="report-problem">
+        <h2>Report a Problem</h2>
+        <div class="report-form">
+            <label for="issue">Issue:</label><br>
+            <textarea id="issue" name="issue" rows="4" cols="50" required></textarea><br>
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <!-- Note: Form submission is not implemented yet -->
+            <!-- <input type="submit" value="Submit"> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+    </footer>
+</body>
+</html>
