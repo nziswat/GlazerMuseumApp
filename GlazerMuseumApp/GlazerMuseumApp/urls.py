@@ -19,6 +19,7 @@ from django.urls import path, include
 from Login import views as login_views 
 from About import views as about_views 
 from Contact import views as contact_views
+from Report import views as report_views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -50,7 +51,10 @@ urlpatterns = [
     path('contact/', contact_views.contact_page, name='contact_page'),  
 
     # URL pattern for the Django admin page
-    path('admin/', admin.site.urls, name='admin'),  
+    path('admin/', admin.site.urls, name='admin'),
+
+    # URL pattern for the Report page
+    path('report/', report_views.report_page, name='report_page'), 
 
     # URL pattern for the SplashPage app
     path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),

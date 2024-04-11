@@ -4,27 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Glazer's Children Museum</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'gcm.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gcmtest.css' %}">
     <!-- Add viewport meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add CSS link for your styles -->
-    <style>
-        /* Style for back-to-top button */
-        .back-to-top {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-            background-color: #960ac9d1;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            text-align: center;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-    </style>
+
+
 </head>
 <body>
     <!-- Header -->
@@ -45,21 +30,25 @@
     </header>
     
     <!-- Banner -->
-    <section id="banner" style="display: flex;">
-        <div style="flex: 1;">
+    <section id="banner">
+        <div class="welcome-message">
             <h2>WELCOME!</h2>
             <p class="text" id="text1id">Play with purpose at the Glazer Children’s Museum, Tampa’s interactive, learning laboratory where children play, discover, and connect to the world around them to develop as lifelong learners and leaders. Ready to explore? Take a look!</p>
+        </div>
+        <div class="slider-container">
             <div class="slider">
                 <div class="slides">
                     <img class="slide" src="{% static 'big-john-glazer-childrens-museum-banner.jpg' %}" alt="Big John">
                     <img class="slide" src="{% static 'gcmpark.jpg' %}" alt="Slide 2">
                     <img class="slide" src="{% static 'gcmpark2.webp' %}" alt="Slide 3">
                 </div>
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <button class="next" onclick="prevSlide()">&#10095;</button>
+                <div class="slider-buttons">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
             </div>
-            <script src="{% static 'gcm.js' %}"></script>
         </div>
+        <script src="{% static 'gcmtest.js' %}"></script>
     </section>
 
     <!-- Exhibits -->
@@ -82,12 +71,24 @@
     <footer id="footer">
         <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
     </footer>
+    
+    <!-- Admin Footer -->
+    <footer id="admin-footer">
+        <p><a href="{% url 'login_page' %}">Admin</a></p>
+    </footer>
+
+    <!-- Report Footer -->
+    <footer id="report-footer">
+        <p><a href="{% url 'report_page' %}">Report a Problem</a></p>
+    </footer>
+
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="back-to-top">Back to Top</a>
 
-    <!-- JavaScript for Back to Top Button -->
+    <!-- JavaScript for Back to Top Button and Slideshow -->
     <script>
+        // Back to Top Button functionality (remains unchanged)
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
@@ -103,6 +104,22 @@
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         });
+
+        // Slideshow functionality with automatic cycling
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds (adjust as needed)
+        }
     </script>
 </body>
 </html>

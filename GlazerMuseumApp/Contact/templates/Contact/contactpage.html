@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Glazer's Children Museum</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'gcm.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gcmtest.css' %}">
     <!-- Add viewport meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add CSS link for your styles -->
@@ -38,5 +38,16 @@
             <p><strong>Main Website:</strong> <a href="https://glazermuseum.org/" target="_blank">https://glazermuseum.org/</a></p>
         </div>
     </section>
+
+<!-- Footer -->
+<footer id="footer">
+    <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+</footer>
+
+<!-- Report Footer -->
+<footer id="report-footer">
+    <p><a href="{% url 'report_page' %}">Report a Problem</a></p>
+</footer>
+
 </body>
 </html>

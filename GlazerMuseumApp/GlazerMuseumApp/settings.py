@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'Login.apps.LoginConfig',
     'About.apps.AboutConfig',
     'Contact.apps.ContactConfig',
+    'Report.apps.ReportConfig',
     #Admin Honeypot app
     'admin_honeypot',
     #2FA
