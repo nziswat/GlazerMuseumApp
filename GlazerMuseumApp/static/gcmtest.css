@@ -1,6 +1,6 @@
 /* Default styles for larger screens */
 body {
-    background-color: #32b3d3d1; /* Light blue background color */
+    background-color: #8ed1fc; /* Light blue background color */
     color: #75585888; /* Text color */
     font-family: Arial, sans-serif; /* Font family */
     line-height: 1.6; /* Set line height */
@@ -25,7 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 2%;
-    background-color: #960ac9d1;
+    background-color: #9b51e0;
     color: #000000;
     font-family: Arial, sans-serif;
 }
@@ -116,7 +116,7 @@ img.displaySlide {
     margin-left: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px 15px;
-    background-color:  #32b3d3d1 !important; /* Corrected border definition */
+    background-color:  #8ed1fc !important; /* Corrected border definition */
     border-radius: 20px;
 }
 
