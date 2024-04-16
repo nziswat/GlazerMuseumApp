@@ -54,9 +54,11 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
 
     # URL pattern for the Report page
-    path('report/', report_views.report_page, name='report_page'), 
+    path('report/', include("Report.urls", namespace='report')), 
 
     # URL pattern for the SplashPage app
     path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),
+    
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

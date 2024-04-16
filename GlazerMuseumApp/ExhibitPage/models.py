@@ -20,7 +20,7 @@ class PlaySet(models.Model): #Contains plays that each exhibit can use
 
 class Play(models.Model): #Each play itself, is an object maybe in the future admins decide they want more 
     playName = models.CharField(max_length=200, default='')
-    playDescription = models.CharField(max_length=1024, default='') 
+    playDescription = models.CharField(max_length=1024, default='')  #TODO: change to textfield 
 
     def save(self, *args, **kwargs): #overwrites the regular save function
         is_new = self._state.adding

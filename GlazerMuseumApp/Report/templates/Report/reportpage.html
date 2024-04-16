@@ -31,21 +31,38 @@
     </header>
 
     <!-- Report a Problem Section -->
+
+
     <section id="report-problem">
-        <h2>Report a Problem</h2>
-        <div class="report-form">
-            <label for="issue">Issue:</label><br>
-            <textarea id="issue" name="issue" rows="4" cols="50" required></textarea><br>
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <!-- Note: Form submission is not implemented yet -->
-            <!-- <input type="submit" value="Submit"> -->
+        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+            <ul style="list-style-type: none; text-align: center; margin: 0 auto; width: fit-content;">
+            </ul>
+            <form action="{% url 'report:submit' %}" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <input type="text" name="smallDesc">
+                    <label for="Enter Bug Desc or whatever"> </label>
+                </fieldset>
+                <input type="submit" value="Vote">
+            </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
-    </footer>
+        <!--
+                <h2>Report a Problem</h2>
+                <div class="report-form">
+                    <label for="issue">Issue:</label><br>
+                    <textarea id="issue" name="issue" rows="4" cols="50" required></textarea><br>
+                    <label for="email">Your Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <!-- Note: Form submission is not implemented yet
+        <input type="submit" value="Submit">
+        </div>
+     -->
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+        </footer>
 </body>
 </html>
