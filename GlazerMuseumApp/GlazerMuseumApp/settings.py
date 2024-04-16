@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_random_secret_key()
 # Basic configurations
-ALLOWED_HOSTS = ['yourdomain.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Security settings
 SECURE_SSL_REDIRECT = True
