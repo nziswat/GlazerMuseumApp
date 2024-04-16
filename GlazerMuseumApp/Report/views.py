@@ -17,11 +17,12 @@ def report_page(request):
     return render(request, 'Report/reportpage.html', context)
 
 
-def submit(request): 
-    
-    #shortDesc = request.POST.
+def submit(request):
+    if request.method == 'POST':
+        small = request.POST.get('smallDesc')  
+        long = request.POST.get('largeDesc')   
+        new_bug = BugReport.objects.create(smallDesc=small, longDesc=long)
 
-    newBug = BugReport()
 
 
 

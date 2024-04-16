@@ -35,15 +35,17 @@
 
     <section id="report-problem">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <ul style="list-style-type: none; text-align: center; margin: 0 auto; width: fit-content;">
-            </ul>
-            <form action="{% url 'report:submit' %}" method="post">
+
+            <form autocomplete="off" action="{% url 'report:submit' %}" method="post">
+                <p>Please enter a short description.</p>
                 {% csrf_token %}
-                <fieldset>
-                    <input type="text" name="smallDesc">
-                    <label for="Enter Bug Desc or whatever"> </label>
+                <fieldset> <!--TODO: HTML to CSS -->
+                    <label for="smallDesc">Please enter a short description of the bug<br /></label>
+                    <input type="text" name="smallDesc" size="100" style="height: 50px;"><br />
+                    <label for="bigDesc">Please describe how this bug occured / Steps to reproduce bug<br /></label>
+                    <input type="text" name="largeDesc" size="100" style="height: 50px;"><br />
                 </fieldset>
-                <input type="submit" value="Vote">
+                <input type="submit" value="Submit Bug Report">
             </form>
         </div>
     </section>
