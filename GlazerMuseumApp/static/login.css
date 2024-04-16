@@ -16,10 +16,10 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: rgb(18, 197, 203);
+  background: #8ed1fc;
 }
 ::selection{
-  background: #195fb4;
+  background: #0693e3;
   color: #fff;
 }
 .wrapper{
@@ -74,7 +74,7 @@ html,body{
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: rgb(154, 45, 232);
+  background: #9b51e0;
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 input[type="radio"]{
@@ -135,7 +135,7 @@ form .field input:focus::placeholder{
 }
 .form-inner form .pass-link a,
 .form-inner form .signup-link a{
-  color: #0e45dd;
+  color: #8ed1fc;
   text-decoration: none;
 }
 .form-inner form .pass-link a:hover,
@@ -154,7 +154,7 @@ form .btn .btn-layer{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:  rgb(154, 45, 232);
+  background:  #9b51e0;
   border-radius: 5px;
   transition: all 0.4s ease;;
 }
