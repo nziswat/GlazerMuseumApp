@@ -36,7 +36,22 @@
     <ul style="list-style-type: none; padding: 0;">
         {% for ExhibitData in exhibitList %}
         <li style="margin-bottom: 8px; font-size: 20px;">
-            <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none; color: black;">{{ ExhibitData.titleText }}</a>
+            <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none;">
+                <button style="background-color: #9b51e0; /* Green */
+                                border: none;
+                                color: white;
+                                padding: 15px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 20px;
+                                margin: 4px 2px;
+                                cursor: pointer;
+                                border-radius: 8px;
+                                transition-duration: 0.4s;">
+                    {{ ExhibitData.titleText }}
+                </button>
+            </a>
         </li>
         {% endfor %}
     </ul>
@@ -45,6 +60,7 @@
     {% endif %}
     </p>
 </section>
+
 
 <!-- Footer -->
 <footer id="footer">
