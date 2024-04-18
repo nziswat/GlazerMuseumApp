@@ -8,6 +8,31 @@
     <!-- Add viewport meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add CSS link for your styles -->
+    <style>
+        /* Add custom styles */
+        #exhibit-details {
+            text-align: center;
+            margin-top: 20px; /* Adjust margin as needed */
+        }
+
+        #exhibit-details .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #exhibit-details img {
+            max-width: 100%; /* Ensure image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Adjust margin as needed */
+            margin-bottom: 20px; /* Add margin bottom for space */
+        }
+
+        /* Remove margin from paragraphs */
+        #exhibit-details p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -27,61 +52,58 @@
         </nav>
     </header>
 
-<!-- Exhibits Container -->
-<section id="exhibits" style="text-align: center;">
-    <h2 id="exhibits-title" style="font-family: Arial, sans-serif; color: black; font-size: 32px;">{% if ExhibitData %}{{ ExhibitData.titleText }}{% else %}Exhibits{% endif %}</h2>
-    <p>
-    {% if exhibitList %}
-        <ul style="list-style-type: none; padding: 0;">
-            {% for ExhibitData in exhibitList %}
-                <li style="margin-bottom: 8px; font-size: 20px;">
-                    <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none; color: black;">{{ ExhibitData.titleText }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        {% if not ExhibitData %}
-            <p>There are no exhibits at this moment.</p>
-        {% endif %}
-    {% endif %}
-    </p>
-</section>
-
-<!-- Exhibit Details Section -->
-<section id="exhibit-details" style="text-align: center;">
-    {% if ExhibitData %}
-        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <ul style="list-style-type: none; text-align: center; margin: 0 auto; width: fit-content;">
-                <li>{{ ExhibitData.titleText }}</li>
-                
+    <!-- Exhibits Container -->
+    <section id="exhibits" style="text-align: center;">
+        <h2 id="exhibits-title" style="font-family: Arial, sans-serif; color: black; font-size: 32px;">{% if ExhibitData %}{{ ExhibitData.titleText }}{% else %}Exhibits{% endif %}</h2>
+        <p>
+        {% if exhibitList %}
+            <ul style="list-style-type: none; padding: 0;">
+                {% for ExhibitData in exhibitList %}
+                    <li style="margin-bottom: 8px; font-size: 20px;">
+                        <a href="/ExhibitPage/{{ ExhibitData.id }}" style="text-decoration: none; color: black;">{{ ExhibitData.titleText }}</a>
+                    </li>
+                {% endfor %}
             </ul>
-            <!-- Center the image -->
-            <img src="{{ ExhibitData.image.url }}" alt="Image">
-            <form action="{% url 'ExhibitPage:vote' ExhibitData.id %}" method="post">
-                {% csrf_token %}
-                <fieldset>
-                    {% for play in plays %}
-                        <input type="checkbox" name="plays[]" id="play{{ forloop.counter }}" value="{{ play }}">
-                        <label for="play{{ forloop.counter }}">{{ play }}<br /> </label>
-                    {% endfor %}
-                </fieldset>
-                <input type="submit" value="Vote">
-            </form>
-        </div>
-    {% else %}
-        <h2 style="font-family: Arial, sans-serif; color: black; font-size: 32px;">Select an Exhibit</h2>
-    {% endif %}
-</section>
+        {% else %}
+            {% if not ExhibitData %}
+                <p>There are no exhibits at this moment.</p>
+            {% endif %}
+        {% endif %}
+        </p>
+    </section>
 
-<!-- Footer -->
-<footer id="footer">
-    <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
-</footer>
+    <!-- Exhibit Details Section -->
+    <section id="exhibit-details">
+        {% if ExhibitData %}
+            <div class="container">
+                <p style="font-family: Arial, sans-serif; color: black; font-size: 18px;">{{ ExhibitData.titleText }}</p>
+                <p style="font-family: Arial, sans-serif; color: black; font-size: 18px;">{{ ExhibitData.descText }}</p>
+                <img src="{{ ExhibitData.image.url }}" alt="Image">
+                <form action="{% url 'ExhibitPage:vote' ExhibitData.id %}" method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        {% for play in plays %}
+                            <input type="checkbox" name="plays[]" id="play{{ forloop.counter }}" value="{{ play }}">
+                            <label for="play{{ forloop.counter }}">{{ play }}<br /> </label>
+                        {% endfor %}
+                    </fieldset>
+                    <input type="submit" value="Vote">
+                </form>
+            </div>
+        {% else %}
+            <h2 style="font-family: Arial, sans-serif; color: black; font-size: 32px;">Select an Exhibit</h2>
+        {% endif %}
+    </section>
 
-<!-- Report Footer -->
-<footer id="report-footer">
-    <p><a href="{% url 'report:report_page' %}">Report a Problem</a></p>
-</footer>
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+    </footer>
+
+    <!-- Report Footer -->
+    <footer id="report-footer">
+        <p><a href="{% url 'report_page' %}">Report a Problem</a></p>
+    </footer>
 
 </body>
 </html>
