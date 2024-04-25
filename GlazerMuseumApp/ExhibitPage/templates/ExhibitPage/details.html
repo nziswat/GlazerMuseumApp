@@ -39,16 +39,23 @@
     <header>
         <!-- GCM LOGO -->
         <a href="{% url 'SplashPage:index' %}">
-            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+            <div class="logo">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo"> </div>
         </a>
+        <!-- Hamburger Button -->
+        <button class="hamburger" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <!--NAVBAR-->
-        <nav>
-            <div class="navbar">
-                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
-                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
-                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
-                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
-            </div>
+        <nav class="nav">
+            <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+            <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+            <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About</a>
+            <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
+            <a href="{% url 'more_page' %}" id="more-link" class="nav-link">More</a>
+            <a href="{% url 'shop_page' %}" id="shop-link" class="nav-link">Shop</a>
         </nav>
     </header>
 
@@ -102,8 +109,22 @@
 
     <!-- Report Footer -->
     <footer id="report-footer">
-        <p><a href="{% url 'report:report_page' %}">Report a Problem</a></p>
+        <p><a href="{% url 'report_page' %}">Report a Problem</a></p>
     </footer>
+
+    <!-- JavaScript for toggling navbar visibility -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+    
+        // Add click event listener to hamburger icon
+        hamburger.addEventListener('click', function() {
+            // Toggle 'active' class on nav to show/hide it
+            nav.classList.toggle('active');
+        });
+    });
+    </script>
 
 </body>
 </html>
