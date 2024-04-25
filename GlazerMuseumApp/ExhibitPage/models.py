@@ -2,10 +2,14 @@
 #Log:
 #4/1/24: Made this header.
 #4/2/24: Added comments
+#4/23/24: Refactored for deploying into production server
 
+import os
 from collections import defaultdict
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
 
 
     
@@ -38,7 +42,7 @@ class Play(models.Model): #Each play itself, is an object maybe in the future ad
 class ExhibitData(models.Model): #perhaps change ExhibitData to ExhibitData, since it's grown out of hand.
     titleText= models.CharField(max_length=200, default='')
     descText= models.CharField(max_length=1024, blank=True)
-    image = models.ImageField(upload_to='images',default='blank') #TODO: make this actually work
+    image = models.ImageField(upload_to=(os.path.join(settings.BASE_DIR, 'static_files')),default='blank')
     playSet = models.ForeignKey(PlaySet, on_delete=models.SET_NULL, null=True, blank=True)
    
     #TODO: not to do this here but probably manipulate the admin options so that 'default' and '---' doesn't show up together and instead turn '---' to default
