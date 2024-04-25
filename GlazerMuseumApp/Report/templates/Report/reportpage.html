@@ -17,54 +17,57 @@
     <header>
         <!-- GCM LOGO -->
         <a href="{% url 'SplashPage:index' %}">
-            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo" id="logo">
+            <div class="logo">
+            <img class="logo" src="{% static 'GCMLogo.png' %}" alt="GCM Logo"> </div>
         </a>
+        <!-- Hamburger Button -->
+        <button class="hamburger" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <!--NAVBAR-->
-        <nav>
-            <div class="navbar">
-                <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
-                <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
-                <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About Us</a>
-                <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
-            </div>
+        <nav class="nav">
+            <a href="{% url 'SplashPage:index' %}" id="home-link" class="nav-link">Home</a>
+            <a href="{% url 'ExhibitPage:index' %}" id="exhibits-link" class="nav-link">Exhibits</a>
+            <a href="{% url 'about_page' %}" id="about-link" class="nav-link">About</a>
+            <a href="{% url 'contact_page' %}" id="contact-link" class="nav-link">Contact</a>
+            <a href="{% url 'more_page' %}" id="more-link" class="nav-link">More</a>
+            <a href="{% url 'shop_page' %}" id="shop-link" class="nav-link">Shop</a>
         </nav>
     </header>
 
     <!-- Report a Problem Section -->
-
-
     <section id="report-problem">
-        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-
-            <form autocomplete="off" action="{% url 'report:submit' %}" method="post">
-                <p>Please enter a short description.</p>
-                {% csrf_token %}
-                <fieldset> <!--TODO: HTML to CSS -->
-                    <label for="smallDesc">Please enter a short description of the bug<br /></label>
-                    <input type="text" name="smallDesc" size="100" style="height: 50px;"><br />
-                    <label for="bigDesc">Please describe how this bug occured / Steps to reproduce bug<br /></label>
-                    <input type="text" name="largeDesc" size="100" style="height: 50px;"><br />
-                </fieldset>
-                <input type="submit" value="Submit Bug Report">
-            </form>
+        <h2>Report a Problem</h2>
+        <div class="report-form">
+            <label for="issue">Issue:</label><br>
+            <textarea id="issue" name="issue" rows="4" cols="50" required></textarea><br>
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <!-- Note: Form submission is not implemented yet -->
+            <!-- <input type="submit" value="Submit"> -->
         </div>
     </section>
 
-        <!--
-                <h2>Report a Problem</h2>
-                <div class="report-form">
-                    <label for="issue">Issue:</label><br>
-                    <textarea id="issue" name="issue" rows="4" cols="50" required></textarea><br>
-                    <label for="email">Your Email:</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-                    <!-- Note: Form submission is not implemented yet
-        <input type="submit" value="Submit">
-        </div>
-     -->
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
+    </footer>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <p>© 2024 GLAZERS CHILDREN MUSEUM RESERVED</p>
-        </footer>
+<!-- JavaScript for toggling navbar visibility -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+    
+        // Add click event listener to hamburger icon
+        hamburger.addEventListener('click', function() {
+            // Toggle 'active' class on nav to show/hide it
+            nav.classList.toggle('active');
+        });
+    });
+    </script>
+
 </body>
 </html>
