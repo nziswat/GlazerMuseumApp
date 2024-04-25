@@ -68,3 +68,14 @@ function nextSlide() {
 
 // Call the showSlides function to start the slideshow
 showSlides();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+  
+    // Add click event listener to hamburger icon
+    hamburger.addEventListener('click', function() {
+      // Toggle 'active' class on nav to show/hide it
+      nav.classList.toggle('active');
+    });
+  });
