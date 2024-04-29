@@ -54,7 +54,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
 
     # URL pattern for the Report page
-    path('report/', include("Report.urls", namespace='report')), 
+    path('report/', report_views.report_page, name='report_page'), 
 
     # URL pattern for the SplashPage app
     path('', include(("SplashPage.urls", 'SplashPage'), namespace='SplashPage')),
